@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FCFS</title>
-    <link rel="stylesheet" href=  "../archivos css/fcfs.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="../archivos css/fcfs.css" />
     <script
       src="https://kit.fontawesome.com/b945b2ef8d.js"
       crossorigin="anonymous"
@@ -31,29 +32,51 @@
             <div class="showcase-text">
               <h2>FCFS</h2>
               <p class="supporting-text">
-                Los procesos son ejecutados en el orden que llegan a la cola de procesos
-listos.
- La implementación es fácil a través de una cola FIFO.
- Es adecuado para sistemas por lotes (batch).
- Es un algoritmo no expropiativo: una vez que el procesador le es asignado
-a un proceso este lo mantiene hasta que termina o se bloquea (por ejemplo
-al generar un pedido de E/S).
- El tiempo de espera promedio por lo general es alto.
+                Los procesos son ejecutados en el orden que llegan a la cola de
+                procesos listos.  La implementación es fácil a través de una
+                cola FIFO.  Es adecuado para sistemas por lotes (batch).  Es
+                un algoritmo no expropiativo: una vez que el procesador le es
+                asignado a un proceso este lo mantiene hasta que termina o se
+                bloquea (por ejemplo al generar un pedido de E/S).  El tiempo
+                de espera promedio por lo general es alto.
               </p>
             </div>
           </div>
 
           <div class="grid-item-2">
             <div class="image">
-              <img
-                src="../assets/FCFS.jpg"
-                alt="Imagen de algoritmos"
-              />
+              <img src="../assets/FCFS.jpg" alt="Imagen de algoritmos" />
             </div>
           </div>
         </div>
       </div>
     </section>
-    <script src="main.js"></script>
+
+    <section class="process">
+      <form action="#" id="formRegistro">
+        <h1>Ingresar Proceso</h1>
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input type="text" name="nombre" id="nombre" class="form-control" />
+        </div>
+        <div class="mb-3">
+          <label for="llegada" class="form-label">Llegada</label>
+          <input type="text" name="llegada" id="llegada" class="form-control"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="duracion" class="form-label">Duracion</label>
+          <input type="text" name="duracion" id="duracion" class="form-control" />
+        </div>
+        
+        <div class="mb-3">
+          <input type="submit" value="Añadir" />
+        </div>
+
+      </form>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="../archivos JS/fcfs.js"></script>
   </body>
 </html>

@@ -154,53 +154,20 @@ p {
 
 }
 
-/* Lower section styles*/
 
-.lower-container{
-    margin: 240px auto;
-    padding: 0;
-    max-width: 1400px;
-}
+/* Estilos del lista procesos */
 
-.title{
-    color: black;
-    font-size: 20px;
-    text-align: left;
-    padding-left: 10px;
-    padding-top: 10px; 
-    margin: 0 20px; 
-}
-
-.text{
-    color: black;
-    font-size: 19px;
-    width: 100%;
-    padding: 10px;
-    margin: 0 20px;
-    text-align: justify;
-}
-
-.flex{
+.process{
+    margin-top: 200px;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
 }
 
-.stats{
-    padding: 45px 50px;
-    text-align: center;
-}
-
-.stat{
-    margin: 0 30px;
-    text-align: center;
-    width: 400px; 
-}
-
-.stats .fa{
-    color: #005200;
-}
-
-.imgDog{
-    width: 100px;
-    height: 100px;
+#formRegistro{
+    width:400px;
+    text-align: center; 
+    background-color: white;
+    margin: 50px auto;
+    border-radius: 5px;
+    border: 2px solid darkblue;
 }
