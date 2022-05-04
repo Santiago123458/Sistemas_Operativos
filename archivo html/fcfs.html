@@ -20,6 +20,8 @@
           <ul>
             <li class="nav"><a href="" class="outline">FCFS</a></li>
             <li class="nav"><a href="" class="outline">ROUND ROBIN</a></li>
+            <li class="nav"><a href="" class="outline">SPN</a></li>
+            <li class="nav"><a href="" class="outline">SRTF</a></li>
           </ul>
         </nav>
       </div>
@@ -33,11 +35,11 @@
               <h2>FCFS</h2>
               <p class="supporting-text">
                 Los procesos son ejecutados en el orden que llegan a la cola de
-                procesos listos.  La implementación es fácil a través de una
-                cola FIFO.  Es adecuado para sistemas por lotes (batch).  Es
+                procesos listos. La implementación es fácil a través de una
+                cola FIFO. Es adecuado para sistemas por lotes (batch). Es
                 un algoritmo no expropiativo: una vez que el procesador le es
                 asignado a un proceso este lo mantiene hasta que termina o se
-                bloquea (por ejemplo al generar un pedido de E/S).  El tiempo
+                bloquea (por ejemplo al generar un pedido de E/S).El tiempo
                 de espera promedio por lo general es alto.
               </p>
             </div>
@@ -54,26 +56,29 @@
 
     <section class="process">
       <form action="#" id="formAdd">
-        <h1>Ingresar Proceso</h1>
-        <div class="mb-3">
-          <label for="nombre" class="form-label">Nombre</label>
-          <input type="text" name="nombre" id="nombre" class="form-control" />
-        </div>
-        <div class="mb-3">
-          <label for="llegada" class="form-label">Llegada</label>
-          <input type="text" name="llegada" id="llegada" class="form-control"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="duracion" class="form-label">Duracion</label>
-          <input type="text" name="duracion" id="duracion" class="form-control" />
-        </div>
-        
-        <div class="mb-3">
-          <button class="btn btn-outline-secondary" type="button" id="buttonAdd">Añadir</button>
-          <button class="btn btn-outline-secondary" type="button" id="buttonShow">Mostrar Procesos</button>
-        </div>
+        <section class="formulario">
 
+          <h1>Ingresar Proceso</h1>
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre del proceso</label>
+            <input type="text" name="nombre" id="nombre" class="form-control" />
+          </div>
+          <div class="mb-3">
+            <label for="llegada" class="form-label">Llegada</label>
+            <input type="text" name="llegada" id="llegada" class="form-control"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="duracion" class="form-label">Duracion</label>
+            <input type="text" name="duracion" id="duracion" class="form-control" />
+          </div>
+          
+          <div class="mb-3">
+            <button class="btn btn-outline-secondary" type="button" id="buttonAdd">Añadir</button>
+            <button class="btn btn-outline-secondary" type="button" id="buttonShow">Mostrar Procesos</button>
+          </div>
+          
+        </section>
       </form>
     </section>
 
