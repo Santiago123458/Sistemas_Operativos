@@ -147,27 +147,24 @@
 // almacena 
 const resultados = {
     nombre: "",
-    contrasena: "",
-    contrasena2: "",
-    correo: "",
-    celular:""
+    llegada: "",
+    duracion: ""
 }
 
 //objeto que almacena y dice si los campos son correctos
 const campos ={
     nombre: false,
-    contrasena: false,
-    contrasena2: false,
-    correo: false,
-    celular: false
+    llegada: false,
+    duracion: false,
 }
-//array que va a guardar los usuarios registrados
-let usuariosRegistrados = [];
 
 // Variables donde se guardan los nodos del dom 
 const nombre = document.querySelector('#nombre');
 const llegada = document.querySelector('#llegada');
 const duracion = document.querySelector('#duracion');
+const formulario = document.querySelector('#formAdd');
+const botonAnadir = document.querySelector('#buttonAdd'); 
+const botonMostrar = document.querySelector('#buttonShow'); 
 
 //funciones que añaden el evento a cada campo
     nombre.addEventListener('input', e => {
@@ -175,98 +172,59 @@ const duracion = document.querySelector('#duracion');
     });
 
     llegada.addEventListener('input', e => {
-        resultados.correo = e.target.value;
+        resultados.llegada = e.target.value;
     });
 
     duracion.addEventListener('input', e => {
-        resultados.celular = e.target.value;
+        resultados.duracion = e.target.value;
     });
 
    
 
-// funcion para añadir nuevos usuarios
-function registrar(obj){
-    let arrayDeUsuarios = "";
-
-    if(localStorage.getItem('usersOsc') == null){  
-        usuariosRegistrados.push(resultados);
-        arrayDeUsuarios = JSON.stringify(usuariosRegistrados);
-        localStorage.setItem('usersOsc',arrayDeUsuarios);
-    }else{
-        arrayDeUsuarios = localStorage.getItem('usersOsc');
-        usuariosRegistrados = JSON.parse(arrayDeUsuarios);
-        usuariosRegistrados.push(obj);
-        arrayDeUsuarios = JSON.stringify(usuariosRegistrados);
-        localStorage.setItem('usersOsc', arrayDeUsuarios);
-    }
-
-}
-
-//funcion que valida el formulario
+//funcion que valida el formulario, los campos para los procesos son correctos 
 function validarCampos(){
     const expresiones = {
     nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/,
-    contrasena: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
-    contrasena2: "",
-    correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-    celular:/^\d{10}$/
+    llegada:  /^[0-9]*(\.?)[0-9]+$/,
+    duracion:  /^[0-9]*(\.?)[0-9]+$/,
     };
 
     if(expresiones.nombre.test(resultados.nombre)){
-        document.querySelector("#nombreError").style.display ="none";
         campos.nombre = true;
     }else{
-        document.querySelector("#nombreError").style.display ="block";
+        alert('El nombre no es valido')
         campos.nombre = false;
     } 
 
-    if(expresiones.celular.test(resultados.celular)){
-        document.querySelector("#celularError").style.display ="none";
-        campos.celular = true;
+    if(expresiones.llegada.test(resultados.llegada)){
+        campos.llegada = true;
     }else{
-        document.querySelector("#celularError").style.display ="block";
-        campos.celular = false;
+        alert('El campo de llegada no es valido')
+        campos.llegada = false;
     } 
 
-    if(expresiones.correo.test(resultados.correo)){
-        document.querySelector("#correoError").style.display ="none";
-        campos.correo = true;
+    if(expresiones.duracion.test(resultados.duracion)){
+        campos.duracion = true;
     }else{
-        document.querySelector("#correoError").style.display ="block";
-        campos.correo = false;
-    } 
-
-    if(expresiones.contrasena.test(resultados.contrasena)){
-        document.querySelector("#contrasenaError").style.display ="none";
-        campos.contrasena = true;
-        validarContrasena();
-    }else{
-        document.querySelector("#contrasenaError").style.display ="block";
-        campos.contrasena = false;
+        alert('El campo de duracion no es valido')
+        campos.duracion = false;
     } 
     
 } 
 
-function validarContrasena(){
-    if(resultados.contrasena !== resultados.contrasena2){
-        document.querySelector("#contrasena2Error").style.display ="block";
-        campos.contrasena2 = false;
-    }else{
-        document.querySelector("#contrasena2Error").style.display ="none";
-        campos.contrasena2 = true;
-    }
-
-}
 
 
-formulario.addEventListener('submit', e => {
-        e.preventDefault();
+//  funcion para añadir un proceso Añade un proceso 
+botonAnadir.addEventListener('click', e => {
         validarCampos();
-        if(campos.nombre && campos.celular && campos.contrasena && campos.contrasena2 && campos.correo){
-           registrar(resultados);
-           alert("Alumno Registrado");
-           formulario.reset();
+        if(campos.nombre && campos.llegada && campos.duracion ){
+            procesos.push(new Proceso(resultados.nombre, 0, resultados.duracion, resultados.llegada, 0, 0, 0))
+            formulario.reset();
         }
+})
+
+botonMostrar.addEventListener('click', () => {
+    console.log(procesos)
 })
 
 })();
