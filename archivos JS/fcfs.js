@@ -33,8 +33,8 @@
             this._t = tiempoTotal
         }
         
-        set D(duracionProceso){
-            this._d = duracionProceso
+        set duracion(duracionProceso){
+            this._duracion = duracionProceso
         }
 
         set llegada(llegada){
@@ -106,41 +106,33 @@
     const sumarTiempoDuracion = () => {
         let tiempoDuracionTotal = 0
         procesos.forEach((proceso) => {
-            tiempoDuracionTotal += proceso._duracionProceso
+            tiempoDuracionTotal += proceso.duracion
         })
         return tiempoDuracionTotal
     }
 
     // Calcular valores
-    const calcularValores = (i, contador) => {
-        procesos[i]._fin = contador
-        procesos[i]._inicio =    pro
+    const calcularValores = () => {
+        procesos.forEach((proceso) => {
+            proceso.T = proceso.fin - proceso.llegada
+            proceso.E = proceso.T - proceso.duracion
+            proceso.P = proceso.T/proceso.duracion
+        })
     }
 
     // inicia el algoritmo que simula FIFO 
-    function ejecutarAlgoritmo(){
-        let contador = 0;
-        let i = 0;
-        const duracion = sumarTiempoDuracion()
-        organizarProcesos()
+    function ejecutarAlgoritmo(){    
+        organizarProcesos()    
+        let inicio = procesos[0].llegada // variable para indicar el inicio del proceso en ejecucion 
+        procesos.forEach((proceso) => {
+            proceso.inicio = inicio
+            proceso.fin = proceso.inicio + proceso.duracion  
+            inicio = proceso.fin         
+        })
 
-        while(0 < duracion){
-            if(procesos[i]._duracionProceso == contador){
-                calcularValores(i, contador)
-                i += 1
-                contador += 1
-            }{
-                contador += 1
-            }
-        }
-
+        calcularValores()
 
     }
-
-    const proceso1 = new Proceso()
-    proceso1.mostrarProceso()
-    proceso1.nombre = 'Oscar'
-    console.log(proceso1.nombre)
 
 //Codigo para añadir procesos 
 
@@ -165,6 +157,8 @@ const duracion = document.querySelector('#duracion');
 const formulario = document.querySelector('#formAdd');
 const botonAnadir = document.querySelector('#buttonAdd'); 
 const botonMostrar = document.querySelector('#buttonShow'); 
+const tabla1 = document.querySelector('#tabla1');
+const tablaProcesos = document.querySelector('#tablaProcesos')
 
 //funciones que añaden el evento a cada campo
     nombre.addEventListener('input', e => {
@@ -218,13 +212,32 @@ function validarCampos(){
 botonAnadir.addEventListener('click', e => {
         validarCampos();
         if(campos.nombre && campos.llegada && campos.duracion ){
-            procesos.push(new Proceso(resultados.nombre, 0, resultados.duracion, resultados.llegada, 0, 0, 0))
+            procesos.push(new Proceso(resultados.nombre, 0, parseInt(resultados.duracion), parseInt(resultados.llegada), 0, 0, 0))
             formulario.reset();
         }
 })
 
+function pintarProcesos(){
+    let fila = ''
+    procesos.forEach((proceso) => {
+        fila = 
+        `<tr>
+            <td>${proceso.nombre}</td>
+            <td>${proceso.inicio}</td>
+            <td>${proceso.fin}</td>
+            <td>${proceso.T}</td>
+            <td>${proceso.E}</td>
+            <td>${proceso.P}</td>
+        </tr>`
+        tabla1.innerHTML += fila
+    })
+    tablaProcesos.style.display = "flex";
+}
+
 botonMostrar.addEventListener('click', () => {
+    ejecutarAlgoritmo()
     console.log(procesos)
+    pintarProcesos()
 })
 
 })();

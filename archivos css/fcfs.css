@@ -171,3 +171,23 @@ p {
     border-radius: 5px;
     border: 2px solid darkblue;
 }
+
+/* Estilos de la tabla que muestra los proceso */
+
+#tablaProcesos{
+    display: none;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+table, th, td{
+    border: 2px solid blue;
+}
+
+table{
+    width: 70%;
+}
+
+th, td{
+    padding-left: 8px;
+}

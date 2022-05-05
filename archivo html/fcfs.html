@@ -5,7 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FCFS</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="../archivos css/fcfs.css" />
     <script
       src="https://kit.fontawesome.com/b945b2ef8d.js"
@@ -61,23 +66,58 @@
         </div>
         <div class="mb-3">
           <label for="llegada" class="form-label">Llegada</label>
-          <input type="text" name="llegada" id="llegada" class="form-control"
-          />
+          <input type="text" name="llegada" id="llegada" class="form-control" />
         </div>
         <div class="mb-3">
           <label for="duracion" class="form-label">Duracion</label>
-          <input type="text" name="duracion" id="duracion" class="form-control" />
-        </div>
-        
-        <div class="mb-3">
-          <button class="btn btn-outline-secondary" type="button" id="buttonAdd">Añadir</button>
-          <button class="btn btn-outline-secondary" type="button" id="buttonShow">Mostrar Procesos</button>
+          <input
+            type="text"
+            name="duracion"
+            id="duracion"
+            class="form-control"
+          />
         </div>
 
+        <div class="mb-3">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            id="buttonAdd"
+          >
+            Añadir
+          </button>
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            id="buttonShow"
+          >
+            Ejecutar FIFO
+          </button>
+        </div>
       </form>
     </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <section id="tablaProcesos" class="container">
+      <table>
+        <thead>
+          <th>Proceso</th>
+          <th>Inicio</th>
+          <th>Fin</th>
+          <th>T</th>
+          <th>E</th>
+          <th>P</th>
+        </thead>
+        <tbody id="tabla1">
+
+        </tbody>
+      </table>
+    </section>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
     <script src="../archivos JS/fcfs.js"></script>
   </body>
 </html>
