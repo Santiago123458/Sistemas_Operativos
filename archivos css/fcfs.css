@@ -171,6 +171,7 @@ p {
     border-radius: 5px;
     border: 2px solid darkblue;
 }
+<<<<<<< HEAD
 
 /* Estilos de la tabla que muestra los proceso */
 
@@ -191,3 +192,5 @@ table{
 th, td{
     padding-left: 8px;
 }
+=======
+>>>>>>> db1d533f676235947ec96d7c0fbde62210868dcb
