@@ -226,7 +226,7 @@ function pintarProcesos(){
             <td>${proceso.inicio}</td>
             <td>${proceso.fin}</td>
             <td>${proceso.T}</td>
-            <td>${proceso.Egit }</td>
+            <td>${proceso.E}</td>
             <td>${proceso.P}</td>
         </tr>`
         tabla1.innerHTML += fila
