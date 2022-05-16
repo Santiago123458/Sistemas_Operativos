@@ -3,16 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="description" content="esta es la pagina de spn la cual realizara un calculo acerca de los procesos spn"
+    <meta name="description" content="estees el proceso srtf"
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SPN</title>
+    <title>SRTF</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="../archivos css/fcfs.css" />
+    <link rel="stylesheet" href="../archivos css/srtf.css" />
     <script
       src="https://kit.fontawesome.com/b945b2ef8d.js"
       crossorigin="anonymous"
@@ -27,7 +27,7 @@
             <li class="nav"><a href="file:///C:/Users/santi/OneDrive/Escritorio/Sistemas_Operativos/archivo%20html/fcfs.html" class="outline">FCFS</a></li>
             <li class="nav"><a href="" class="outline">ROUND ROBIN</a></li>
             <li class="nav"><a href="file:///C:/Users/santi/OneDrive/Escritorio/Sistemas_Operativos/archivo%20html/spn.html" class="outline">SPN</a></li>
-            <li class="nav"><a href="file:///C:/Users/santi/OneDrive/Escritorio/Sistemas_Operativos/archivo%20html/srtf.html" class="outline">SRTF</a></li>
+            <li class="nav"><a href="#" class="outline">SRTF</a></li>
           </ul>
         </nav>
       </div>
@@ -38,16 +38,16 @@
         <div class="grid">
           <div class="grid-item-1">
             <div class="showcase-text">
-              <h2>SPN</h2>
+              <h2>SRTF</h2>
               <p class="supporting-text">
-                <strong>SPN</strong>viene de la sigla de Service Principal Name. Éstos deben estar asociados a un objeto de Active Directory (cuenta de usuario, grupo o computador) en el cual el servicio se ejecuta. Su función principal es soportar la autenticación mutua entre un cliente y un servicio.
+                Es similar al sjf, con la diferencia de que si un nuevo proceso pasa a listo se activa el dispatcher para ver si es más corto que lo que queda por ejecutar del proceso en ejecución. Si es así, el proceso en ejecución pasa a listo y su tiempo de estimación se decremento con el tiempo que ha estado ejecutándose.
               </p>
             </div>
           </div>
 
           <div class="grid-item-2">
             <div class="image">
-              <img src="../assets/Spn.jpg" alt="Imagen de algoritmos" />
+              <img src="../assets/Srtf.png" alt="Imagen de algoritmos" />
             </div>
           </div>
         </div>
@@ -56,7 +56,7 @@
 
     <section class="process">
       <form action="#" id="formAdd">
-        <h1>Ingresar Proceso SPN</h1>
+        <h1>Ingresar Proceso SRTF</h1>
         <div class="mb-3">
           <label for="nombre" class="form-label">Nombre</label>
           <input type="text" name="nombre" id="nombre" class="form-control" />
@@ -116,6 +116,6 @@
       integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
       crossorigin="anonymous"
     ></script>
-    <script src="../archivos JS/SPN.js"></script>
+    <script src="../archivos JS/srtf.js"></script>
   </body>
 </html>
