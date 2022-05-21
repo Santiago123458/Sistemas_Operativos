@@ -1,0 +1,194 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: "lato", sans-serif;
+    background-color: white;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 30px;
+    font-weight: 600;
+    margin: 10px 0;
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: 25px;
+    font-weight: 300;
+    margin: 10px 0;
+    line-height: 1.2;
+    color: white;
+}
+
+p {
+    font-size: 30px;
+}
+
+img {
+    width: 100%;
+}
+
+li {
+    list-style: none;
+}
+
+p {
+    font-size: 20px;
+    margin: 10px 0;
+    color: white;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1200px;
+    overflow: visible;
+}
+
+.navbar {
+    background-color: #0069c0;
+    height: 70px;
+    padding: 0 30px;
+}
+
+.navbar h1 {
+    color: white;
+    font-size: 30px;
+    font-weight: 300;
+    margin: 10px 0;
+    line-height: 1.2;
+}
+
+.navbar .flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.navbar ul {
+    display: flex;
+}
+
+.navbar a {
+    color: white;
+    padding: 9px;
+    margin: 0 10px;
+    transition: color 700ms;
+}
+
+.navbar a:hover {
+    color: #b4ff9a;
+    border-bottom: 3px solid;
+}
+
+/* Showcase section styles */
+.showcase {
+    height: 300px;
+    background-color: #0069c0;
+}
+
+.showcase p {
+    margin-bottom: 30px;
+}
+
+.showcase img {
+    box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.2);
+    height: 400px;
+}
+
+.showcase form {
+    padding-left: 7px;
+}
+
+.grid {
+    overflow: visible;
+    display: grid;
+    grid-template-columns: 60% 40%;
+}
+
+.grid-item-1,
+.grid-item-2 {
+    position: relative;
+    top: 50px;
+}
+
+.showcase input[type='email'] {
+    padding: 10px 70px 10px 6px;
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+}
+
+.showcase .btn {
+    border-radius: 6px;
+    padding: 12px 20px;
+    background-color: #4ea93b;
+    border: none;
+    margin-left: 10px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+}
+
+.showcase .btn:hover {
+    background-color: #71c55b;
+}
+
+.showcase form {
+    margin: auto;
+}
+
+.little-info {
+    font-size: 15px;
+    font-family: "poppins", sans-serif;
+
+}
+
+
+/* Estilos del lista procesos */
+
+.process{
+    margin-top: 200px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#formRegistro{
+    width:400px;
+    text-align: center; 
+    background-color: white;
+    margin: 50px auto;
+    border-radius: 5px;
+    border: 2px solid darkblue;
+}
+
+
+/* Estilos de la tabla que muestra los proceso */
+
+#tablaProcesos{
+    display: none;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+table, th, td{
+    border: 2px solid blue;
+}
+
+table{
+    width: 70%;
+}
+
+th, td{
+    padding-left: 8px;
+}
