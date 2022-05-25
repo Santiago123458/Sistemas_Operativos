@@ -1,68 +1,54 @@
-let procesos=[]
-class process{
-    _proceso //el nombre del roceso
-    _duracion //la duracion del proceso
-    _llegada //la legada de el proceso
-    _TComienzo //e tiempo en el que comenzo el proceso
-    _fin // el timpo en el que finalizo el proceso
-    _retorno // el tiempo de retorno del proceso
-    _espera // el tiempo de espera del proceso
-
-    //SE CREA EL CONSTUCTOR
-
-    constructor (nombre= "sin nombre" , duracion= 0, llegada= 0, TComienzo= 0, fin= 0, retorno=0, espera=0 ){
-        this._proceso= nombre;
-        this._duracion= duracion;
-        this._llegada= llegada;
-        this._TComienzo= TComienzo;
-        this._fin= fin;
-        this._retorno= retorno;
-        this._espera= espera;
+(() => {
+    let procesos = []
+    class Proceso{
+        _nombre
+        _llegada
+        _duracion
+        _ciclo_inicial
+        _ciclo_final
+        constructor(nombre_proceso="sin nombre",ciclo_llegada=0, Tiempo_ejecucion=0 ,ciclo_inicial=0, ciclo_final=0){
+            this._llegada = ciclo_llegada
+            this._duracion = Tiempo_ejecucion
+            this._nombre = nombre_proceso
+            this._ciclo_inicial = ciclo_inicial
+            this._ciclo_final = ciclo_final
+        }
+        set nombre(nombre_proceso){
+            this._nombre = nombre_proceso
+        }
+        set llegada(ciclo_llegada){
+            this._llegada = ciclo_llegada
+        }
+        set duracion(Tiempo_ejecucion){
+            this._duracion = Tiempo_ejecucion
+        }
+        set ciclo_inicial(ciclo_inicial){
+            this._ciclo_inicial = ciclo_inicial
+        }
+        set ciclo_final(ciclo_final){
+            this._ciclo_final = ciclo_final
+        }
+        get nombre (){
+            return this._nombre
+        }
+        get llegada(){
+            return this._llegada
+        }
+        get duracion (){
+            return this._duracion
+        }
+        get ciclo_inicial(){
+            return this._ciclo_inicial
+        }
+        get ciclo_final(){
+            return this._ciclo_final
+        }
     }
-    //creamos los objetos
-    set nombre_proceso (nombre){
-        this._proceso = nombre.toUpperCase()
-    } 
-    set duracion (duracion){
-        this._duracion = duracion
+    // ORGANIZACION DE PROCESOS
+    const organizarProcesos = () => {
+        procesos = procesos.sort(function(a, b){
+            return a._llegada - b._llegada
+        })
     }
-    set llegada (llegada){
-        this._llegada = llegada
-    }
-    set comienzo (TComienzo){
-        this._TComienzo= TComienzo
-    }
-    set finalizar (fin){
-        this._fin=fin
-    }
-    set retorno (retorno){
-        this._retorno= retorno
-    }
-    set espera (espera){
-        this._espera= espera
-    }
-    get nombre_proceso (){
-        return this._proceso
-    }
-    get duracion (){
-        return this._duracion
-    }
-    get llegada(){
-        return this._llegada
-    }
-    get comienzo (){
-        return this._TComienzo
-    }
-    get finalizar(){
-        return this._fin
-    }
-    get retorno(){
-        return this._retorno
-    }
-    get espera(){
-        return this._espera
-    }
-    mostrarProceso(){
-        console.log(`Soy un proceso con datos: ${this.nombre_proceso}, ${this.duracion}, ${this.llegada}`)
-    }
-}
+    
+})
