@@ -65,7 +65,7 @@
           procesos[cola[0]].duracion -= 1;
   
           if (procesos[cola[0]].duracion == 0) {
-            procesos[cola[0]].fin = contador+1;
+            procesos[cola[0]].fin = contador;
             ticks = quantum;
             cola.shift();
           } else {
@@ -85,7 +85,7 @@
   
         for (let i = 0; i < procesos.length; i++) {
           const proceso = procesos[i];
-          if (proceso.llegada == contador + 1) {
+          if (proceso.llegada == contador ) {
             if (ticks == quantum) {
               cola.unshift(i);
             } else {
