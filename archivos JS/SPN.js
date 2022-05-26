@@ -6,8 +6,8 @@
         _duracion
         _ciclo_inicial
         _ciclo_final
-        constructor(nombre_proceso="sin nombre",ciclo_llegada=0, Tiempo_ejecucion=0 ,ciclo_inicial=0, ciclo_final=0){
-            this._llegada = ciclo_llegada
+        constructor(nombre_proceso="sin nombre",ciclollegada=0, Tiempo_ejecucion=0 ,ciclo_inicial=0, ciclo_final=0){
+            this._llegada = ciclollegada
             this._duracion = Tiempo_ejecucion
             this._nombre = nombre_proceso
             this._ciclo_inicial = ciclo_inicial
@@ -16,8 +16,8 @@
         set nombre(nombre_proceso){
             this._nombre = nombre_proceso
         }
-        set llegada(ciclo_llegada){
-            this._llegada = ciclo_llegada
+        set llegada(ciclollegada){
+            this._llegada = ciclollegada
         }
         set duracion(Tiempo_ejecucion){
             this._duracion = Tiempo_ejecucion
@@ -45,34 +45,31 @@
         }
     }
     // ORGANIZACION DE PROCESOS
-    const organizarProcesos = () => {
-        procesos = procesos.sort(function(a, b){
-            return a._llegada - b._llegada
-        })
-    }
+     const organizarProcesos = () => {
+         procesos = procesos.sort(function(a, b){
+             return a._llegada - b._llegada
+         })
+     }
+    // Calcular valores
+    const calcularValores = () => {
+       procesos.forEach((proceso) => {
+           proceso._ciclo_inicial = proceso.llegada + proceso.Tiempo_ejecucion
+           proceso._ciclo_final = proceso.ciclo_inicial + proceso.Tiempo_ejecucion
+       })
+   }
+    
+   
 
-     // suma los tiempos de duracion de todos los proceso
-     const sumarTiempoDuracion = () => {
-        let tiempoDuracionTotal = 0
-        procesos.forEach((proceso) => {
-            tiempoDuracionTotal += proceso.duracion
-        })
-        return tiempoDuracionTotal
-    }
-     // Calcular valores
-     const calcularValores = () => {
-        procesos.forEach((proceso) => {
-            proceso.ciclo_inicial = proceso.llegada + proceso.Tiempo_ejecucion
-            proceso.ciclo_final = proceso.ciclo_inicial + proceso.Tiempo_ejecucion
-        })
-    }
+   
+    
     // inicia el algoritmo que simula SPN
     function ejecutarAlgoritmo(){    
         organizarProcesos()    
         let inicio = procesos[0].llegada // variable para indicar el inicio del proceso en ejecucion 
         procesos.forEach((proceso) => {
-            proceso.ciclo_inicial = llegada
-            proceso.ciclo_final = proceso.ciclo_llegada + proceso.Tiempo_ejecucion       
+            proceso.ciclo_inicial = proceso.llegada
+            proceso.ciclo_final = proceso.llegada + proceso.Tiempo_ejecucion   
+            inicio= proceso.llegada
         })
 
         calcularValores()

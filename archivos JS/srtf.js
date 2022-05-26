@@ -4,73 +4,58 @@
 
     // Clase para crear los procesos 
     class Proceso{
+        _name
+        _llegada
+        _inicio
+        _rafaga
+        _fin
+        _Tespera_maximo
+        _TesperaMedio
 
-        _nombre = '' //A , B ....
-        _t = 0 // Tiempo total que tomo el proceso para ejecutarse (tiempo espera y trabajo util)
-        _duracion = 0 // Tiempo que necesita el proceso para ejecutarse [ticks]
-        _llegada = 0 // Instante del tiempo en el que llega el proceso [ticks]
-        _p = 0 //
-        _e = 0 // tiempo que espera el proeso
-        _inicio = 0 // Cunado inicia a ejecutarse el proceso
-        _fin = 0 // Cuando finaliza de ejecutarse el proceso 
-
-        constructor(nombre = 'Sin nombre', tiempoTotal = 0,  duracionProceso = 0, llegada = 0, penalizacion = 0, tiempoEspera = 0, inicio = 0, fin = 0 ){
-            this._nombre = nombre
-            this._t = tiempoTotal
-            this._duracion = duracionProceso
-            this._llegada = llegada
-            this._p = penalizacion
-            this._e = tiempoEspera
-            this._inicio = inicio
-            this._fin = fin
+        constructor(nombre="sin nombre", llegada=0 , rafaga_cpu=0, esperaMax=0, esperaMedio=0 ,fine=0 , inicio=0){
+            this._name=nombre
+            this._llegada=llegada
+            this._rafaga=rafaga_cpu
+            this._Tespera_maximo=esperaMax
+            this._TesperaMedio=esperaMedio
+            this._fin=fine
+            this._inicio=inicio
+        }
+        set inicio(inicio){
+            this._inicio=inicio
+        }
+        set fine(fine){
+            this._fin=fine
         }
 
         set nombre (nombre){
-            this._nombre = nombre.toUpperCase()
+            this._name = nombre.toUpperCase()
         } 
 
-        set T(tiempoTotal){
-            this._t = tiempoTotal
+        set llegada(llegada){
+            this._llegada= llegada
         }
         
-        set duracion(duracionProceso){
-            this._duracion = duracionProceso
+        set rafaga_cpu(rafaga_cpu){
+            this._rafaga = rafaga_cpu
         }
 
-        set llegada(llegada){
-            this._llegada = llegada
+        set Tiempomed(esperaMedio){
+            this._TesperaMedio = esperaMedio
         }
 
-        set P(penalizacion){
-            this._p = penalizacion
+        set Tiempomax(esperaMax){
+            this._Tespera_maximo = esperaMax
         }
-
-        set E(tiempoEspera){
-            this._e = tiempoEspera
+        get inicio(){
+            return this._inicio
         }
-
-        set inicio(inicio){
-            this._inicio = inicio
-        }
-
-        set fin(fin){
-            this._fin = fin
+        get fine(){
+            return this._fine
         }
 
         get nombre(){
-            return this._nombre
-        }
-
-        get T(){
-            return this._t
-        }
-
-        get E(){
-            return this._e
-        }
-
-        get P(){
-            return this._p
+            return this._name
         }
 
         get llegada(){
@@ -81,16 +66,15 @@
             return this._duracion
         }
 
-        get inicio(){
-            return this._inicio
+        get Tiempomed(){
+            return this._TesperaMedio
         }
 
-        get fin(){
-            return this._fin
+        get Tiempomax(){
+            return this._Tespera_maximo
         }
-
-        mostrarProceso(){
-            console.log(`Soy un proceso con datos: ${this.nombre}, ${this.duracion}, ${this.llegada}`)
+        get rafaga_cpu (){
+            return this._rafaga
         }
     
     }
@@ -102,32 +86,24 @@
         })
     }
 
-    // suma los tiempos de duracion de todos los proceso
-    const sumarTiempoDuracion = () => {
-        let tiempoDuracionTotal = 0
-        procesos.forEach((proceso) => {
-            tiempoDuracionTotal += proceso.duracion
-        })
-        return tiempoDuracionTotal
-    }
 
     // Calcular valores
     const calcularValores = () => {
         procesos.forEach((proceso) => {
-            proceso.T = proceso.fin - proceso.llegada
-            proceso.E = proceso.T - proceso.duracion
-            proceso.P = proceso.T/proceso.duracion
+            proceso.Tiempomax = proceso.fine - proceso.llegada
+            proceso.Tiempomed = proceso.llegada - proceso.fine
+            proceso.fine= proceso.llegada + proceso.rafaga_cpu
         })
     }
 
-    // inicia el algoritmo que simula FIFO 
+    // inicia el algoritmo que simula SRTF 
     function ejecutarAlgoritmo(){    
         organizarProcesos()    
-        let inicio = procesos[0].llegada // variable para indicar el inicio del proceso en ejecucion 
+        let inicio = procesos[0].inicio // variable para indicar el inicio del proceso en ejecucion 
         procesos.forEach((proceso) => {
-            proceso.inicio = inicio
-            proceso.fin = proceso.inicio + proceso.duracion  
-            inicio = proceso.fin         
+            proceso.llegada = llegada
+            proceso.fin = proceso.inicio + proceso.rafaga_cpu 
+            inicio = proceso.llegada         
         })
 
         calcularValores()
@@ -146,13 +122,13 @@ const resultados = {
 //objeto que almacena y dice si los campos son correctos
 const campos ={
     nombre: false,
-    llegada: false,
+    llegada_in: false,
     duracion: false,
 }
 
 // Variables donde se guardan los nodos del dom 
 const nombre = document.querySelector('#nombre');
-const llegada = document.querySelector('#llegada');
+const llegada_in = document.querySelector('#llegada');
 const duracion = document.querySelector('#duracion');
 const formulario = document.querySelector('#formAdd');
 const botonAnadir = document.querySelector('#buttonAdd'); 
@@ -165,7 +141,7 @@ const tablaProcesos = document.querySelector('#tablaProcesos')
         resultados.nombre = e.target.value;
     });
 
-    llegada.addEventListener('input', e => {
+    llegada_in.addEventListener('input', e => {
         resultados.llegada = e.target.value;
     });
 
@@ -179,7 +155,7 @@ const tablaProcesos = document.querySelector('#tablaProcesos')
 function validarCampos(){
     const expresiones = {
     nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/,
-    llegada:  /^[0-9]*(\.?)[0-9]+$/,
+    llegada_in:  /^[0-9]*(\.?)[0-9]+$/,
     duracion:  /^[0-9]*(\.?)[0-9]+$/,
     };
 
@@ -190,11 +166,11 @@ function validarCampos(){
         campos.nombre = false;
     } 
 
-    if(expresiones.llegada.test(resultados.llegada)){
-        campos.llegada = true;
+    if(expresiones.llegada_in.test(resultados.llegada)){
+        campos.llegada_in = true;
     }else{
         alert('El campo de llegada no es valido')
-        campos.llegada = false;
+        campos.llegada_in = false;
     } 
 
     if(expresiones.duracion.test(resultados.duracion)){
@@ -212,7 +188,7 @@ function validarCampos(){
 botonAnadir.addEventListener('click', e => {
         validarCampos();
         if(campos.nombre && campos.llegada && campos.duracion ){
-            procesos.push(new Proceso(resultados.nombre, 0, parseInt(resultados.duracion), parseInt(resultados.llegada), 0, 0, 0))
+            procesos.push(new Proceso(resultados.nombre, 0, parseInt(resultados.duracion), parseInt(resultados.llegada_in), 0, 0, 0))
             formulario.reset();
         }
 })
@@ -223,11 +199,10 @@ function pintarProcesos(){
         fila = 
         `<tr>
             <td>${proceso.nombre}</td>
-            <td>${proceso.inicio}</td>
-            <td>${proceso.fin}</td>
-            <td>${proceso.T}</td>
-            <td>${proceso.E}</td>
-            <td>${proceso.P}</td>
+            <td>${proceso.llegada}</td>
+            <td>${proceso.rafaga_cpu}</td>
+            <td>${proceso.Tiempomed}</td>
+            <td>${proceso.Tiempomax}</td>
         </tr>`
         tabla1.innerHTML += fila
     })
