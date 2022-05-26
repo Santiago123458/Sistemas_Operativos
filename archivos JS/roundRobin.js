@@ -14,8 +14,9 @@
         _e = 0 // tiempo que espera el proeso
         _inicio = 0 // Cunado inicia a ejecutarse el proceso
         _fin = 0 // Cuando finaliza de ejecutarse el proceso 
+        _quantium=0
 
-        constructor(nombre = 'Sin nombre', tiempoTotal = 0,  duracionProceso = 0, llegada = 0, penalizacion = 0, tiempoEspera = 0, inicio = 0, fin = 0 ){
+        constructor(nombre = 'Sin nombre', tiempoTotal = 0,  duracionProceso = 0, llegada = 0, penalizacion = 0, tiempoEspera = 0, inicio = 0, fin = 0 , quantium=0){
             this._nombre = nombre
             this._t = tiempoTotal
             this._duracion = duracionProceso
@@ -24,6 +25,10 @@
             this._e = tiempoEspera
             this._inicio = inicio
             this._fin = fin
+            this._quantium= quantium
+        }
+        set quantium (quantium){
+            this._quantium
         }
 
         set nombre (nombre){
@@ -56,6 +61,9 @@
 
         set fin(fin){
             this._fin = fin
+        }
+        get quantium(){
+            return this._quantium
         }
 
         get nombre(){
@@ -121,12 +129,12 @@
         })
     }
 
-    // inicia el algoritmo que simula FIFO 
+    // inicia el algoritmo que simula ROUND ROBIN
     function ejecutarAlgoritmo(){    
         organizarProcesos()    
         let inicio = procesos[0].llegada // variable para indicar el inicio del proceso en ejecucion 
         procesos.forEach((proceso) => {
-            proceso.inicio = inicio
+            proceso.inicio = inicio 
             proceso.fin = proceso.inicio + proceso.duracion  
             inicio = proceso.fin         
         })
@@ -248,6 +256,7 @@ function pintarProcesos(){
             <td>${proceso.T}</td>
             <td>${proceso.E}</td>
             <td>${proceso.P}</td>
+            <td>${proceso.quantium}</td>
         </tr>`
         tabla1.innerHTML += fila
     })
